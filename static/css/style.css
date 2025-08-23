@@ -1,0 +1,495 @@
+/* Modern Green-Themed Variables */
+:root {
+  --secondary: #28ae4a;
+  --primary: #145524;
+  --primary-hover: #34c759;
+  --secondary-hover: #34c759;
+  --bg: #f0fdf4;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --text: #1a1a1a;
+  --muted: #4b5563;
+  --radius: 1rem;
+  --transition: 0.3s ease-in-out;
+  --shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  --blur: 10px;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  scroll-behavior: smooth;
+  font-size: 1rem;
+}
+
+/* Navigation */
+nav {
+  background: var(--primary);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  transition: background var(--transition), transform var(--transition);
+}
+
+nav a:hover {
+  background: var(--primary-hover);
+  transform: translateY(-3px);
+}
+
+/* Section Containers */
+section, header, main {
+  max-width: 1100px;
+  margin: 2rem auto;
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--blur));
+  animation: slideFadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Buttons */
+button, .btn {
+  background: var(--secondary);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 6px 16px rgba(52, 199, 89, 0.4);
+  font-weight: 600;
+}
+
+button:hover, .btn:hover {
+  background: var(--secondary-hover);
+  transform: scale(1.05);
+}
+
+/* Forms */
+form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+form label {
+  font-weight: 600;
+  color: var(--text);
+}
+
+input, textarea {
+  padding: 0.75rem 1rem;
+  border: 2px solid #d1fae5;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: border var(--transition), box-shadow var(--transition);
+  background: white;
+  width: 100%;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(52, 199, 89, 0.2);
+  outline: none;
+}
+
+/* Testimonials */
+.testimonial {
+  background: #ecfdf5;
+  padding: 1.75rem;
+  margin: 1.5rem 0;
+  border-left: 6px solid var(--primary);
+  border-radius: var(--radius);
+  font-style: italic;
+  color: var(--muted);
+  box-shadow: var(--shadow);
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.notice-list li,
+.event-list li {
+  padding: 1rem;
+  border-bottom: 1px solid #d1fae5;
+  transition: background var(--transition);
+}
+
+.notice-list li:hover,
+.event-list li:hover {
+  background: #f0fdf4;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 3rem;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  section, header, main {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  nav .logo {
+    font-size: 1.25rem;
+  }
+}
+
+/* Typography Enhancements */
+h1, h2, h3 {
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #064e3b;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: #78a07e;
+  font-size: 1.05rem;
+}
+
+
+/* Base.html navbar flex helpers */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-left, .nav-right {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Profile dropdown (top‑right corner) */
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.profile-dropdown .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.profile-dropdown span {
+  color: #fff;
+  font-weight: 600;
+}
+.profile-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: #fff;
+  color: #333;
+  min-width: 150px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: var(--radius);
+  overflow: hidden;
+  z-index: 100;
+}
+.profile-dropdown:hover .dropdown-content {
+  display: block;
+}
+.profile-dropdown .dropdown-content a {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background var(--transition);
+}
+.profile-dropdown .dropdown-content a:hover {
+  background: var(--bg);
+}
+
+/* Utility classes */
+.alert {
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+.alert-success { background: #d1fae5; color: #065f46; }
+.alert-error   { background: #fde2e1; color: #991b1b; }
+
+.auth-form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+.hero-img {
+  width: 100%;
+  max-width: 900px;
+  border-radius: var(--radius);
+  display: block;
+  margin: 2rem auto;
+}
+/* Profile dropdown (top‑right corner) */
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.profile-dropdown .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.profile-dropdown span {
+  color: #fff;
+  font-weight: 600;
+}
+.profile-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: #fff;
+  color: #333;
+  min-width: 150px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: var(--radius);
+  overflow: hidden;
+  z-index: 100;
+}
+/* Show when hovered (or you can use JS to toggle an “open” class instead) */
+.profile-dropdown:hover .dropdown-content {
+  display: block;
+}
+.profile-dropdown .dropdown-content a {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background var(--transition);
+}
+.profile-dropdown .dropdown-content a:hover {
+  background: var(--bg);
+}
+.profile-dropdown .dropdown-content {
+  display: none;
+}
+.profile-dropdown.open .dropdown-content {
+  display: block;
+}
+.contact-form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+#homepage-contact {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.contact-form label {
+  font-weight: bold;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.contact-form button {
+
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.dashboard-table th,
+.dashboard-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.dashboard-table th {
+  background-color: var(--primary-hover);
+  color: white;
+}
+.feed-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.feed-post {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.post-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.75rem;
+}
+
+.post-meta small {
+  color: #666;
+}
+
+.post-body {
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+/* Main navigation */
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  background: #fff;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.main-nav li {
+  position: relative;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.5rem;
+}
+
+.main-nav a:hover {
+  color: #007bff;
+}
+
+/* Dropdown styling */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  min-width: 150px;
+  z-index: 10;
+}
+
+.dropdown-content li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+}
+
+.dropdown-content li a:hover {
+  background: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+#contact-message {
+    resize: none;              /* Prevent resizing */
+    width: 100%;               /* Set a fixed width */
+    height: 150px;             /* Set a fixed height */
+    overflow: auto;            /* Enable scrollbars when needed */
+    padding: 10px;             /* Optional: for better readability */
+    box-sizing: border-box;    /* Ensures padding doesn't increase size */
+  }
+
+
+

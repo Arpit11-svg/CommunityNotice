@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Post a New Event{% endblock %}
+
+{% block content %}
+<h2 style="text-align:center; margin-bottom:1rem;">Post a New Event</h2>
+<form method="post" style="max-width:500px; margin:0 auto;">
+  <textarea
+    name="event"
+    rows="4"
+    placeholder="Describe your event…"
+    required
+    style="width:100%; padding:0.5rem;"
+  ></textarea>
+  <button
+    type="submit"
+    style="display:block; margin:1rem auto; padding:0.5rem 1rem;"
+  >Submit Event</button>
+</form>
+{% endblock %}
