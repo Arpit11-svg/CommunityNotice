@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Community Feed{% endblock %}
+
+{% block content %}
+<h1 style="text-align:center;">Welcome to Our Community Notice Board</h1>
+
+ {% if msg %}
+    <div class="alert alert-success">{{ msg }}</div>
+  {% endif %}
+
+<img src="{{ url_for('static', filename='image/communityImage.jpg') }}"
+       alt="Community gathering" class="hero-img">
+<hr>
+  <h1 style="text-align:center; margin-bottom:1rem;">Community Feed</h1>
+
+  {% if feed %}
+    <div class="feed-container">
+      {% for act in feed %}
+        <div class="feed-post">
+          <!-- Post header: avatar, name, timestamp -->
+          <div class="post-header">
+            <img
+              src="{{ url_for('static', filename='image/avatar.jpg') }}"
+              alt="avatar"
+              class="post-avatar">
+            <div class="post-meta">
+              <strong>{{ act.user.name }}</strong><br>
+              <small>{{ act.date.strftime('%Y-%m-%d %H:%M') }}</small>
+            </div>
+          </div>
+
+          <!-- Post body: either notice or event -->
+          <div class="post-body">
+            {% if act.notice %}
+              <p>{{ act.notice }}</p>
+            {% elif act.event %}
+              <p>{{ act.event }}</p>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p style="text-align:center;">No notices or events yet.</p>
+  {% endif %}
+
+<hr>
+  <section id="homepage-contact">
+    <h2 style="text-align: center; margin-top: 40px;">Get in Touch With Us</h2>
+    {% include 'partials/contact_form.html' %}
+  </section>
+{% endblock %}

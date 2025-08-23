@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %} My Dashboard {% endblock %}
+
+{% block content %}
+  <h2 style="text-align:center;">Welcome, {{ current_user.name }}!</h2>
+  <p style="text-align:center;">Your email: {{ current_user.email }}</p>
+
+  <section class="activity">
+    <h3>Your Recent Activity</h3>
+
+    {% if activities %}
+      <table class="dashboard-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Notice</th>
+            <th>Event</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {# Loop over each activity #}
+          {% for act in activities %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td>{{ act.date.strftime('%Y-%m-%d %H:%M') }}</td>
+              <td>{{ act.notice or '-' }}</td>
+              <td>{{ act.event or '-' }}</td>
+              <td>
+                <a href="{{ url_for('edit_activity', activity_id=act.id) }}">Edit</a> |
+                <a href="{{ url_for('delete_activity', activity_id=act.id) }}"
+                   onclick="return confirm('Are you sure?');">Delete</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p style="text-align:center;">No activity yet.</p>
+    {% endif %}
+  </section>
+{% endblock %}
