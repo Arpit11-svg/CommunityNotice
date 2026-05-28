@@ -1,3 +1,8 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 from flask import Flask, render_template, request, redirect, url_for
 from flask_login import LoginManager, login_user, logout_user, current_user  # for user profile dashboard in side corner
 from flask_login import login_required
@@ -9,6 +14,9 @@ from sqlalchemy.orm import joinedload
 
 
 app = Flask(__name__)
+
+app.secret_key = os.getenv("SECRET_KEY")
+
 app.secret_key = "your‑secret‑key"           # needed for session cookies
 configure_mail(app)
 
